@@ -10,6 +10,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        Scanner scanName = new Scanner(System.in);
+        System.out.println("To use the calculator you need to register first!\nEnter you Name: ");
+        String name= scanName.nextLine();
+        Scanner scanSurname = new Scanner(System.in);
+        System.out.println("\nEnter your surname: ");
+        String surname= scanName.nextLine();
+        Scanner scanID = new Scanner(System.in);
+        System.out.println("\nEnter your ID: ");
+        int id= scanName.nextInt();
+
 
         System.out.println("Enter first number");
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +49,7 @@ public class Main {
         Calculator calculator = new Calculator(a, Person.mathChar, b);
 
 
-        Person personFirst = new Person("Boris", "Mathias", 12356);
+        Person personFirst = new Person(name, surname, id);
 
         if (personFirst.getName() != null) {
             File personFirstFile = new File("personFirst");

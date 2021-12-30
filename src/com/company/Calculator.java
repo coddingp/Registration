@@ -46,24 +46,42 @@ public class Calculator implements Calculable {
         return res;
     }
 
+    @Override
+    public void add() {
+        setRes(getFirst() + getSecond());
+    }
 
-
-    public void calculate() {
-        if (this.mathChar == '+') {
-            this.res = this.first + this.second;
-        } else if (this.mathChar == '-') {
-            this.res = this.first - this.second;
-        } else if (this.mathChar == '*') {
-            this.res = this.first * this.second;
-        } else if (this.mathChar == '/') {
-            if (this.second==0){
-                throw new ArithmeticException("You can't divide by " + 0);
-            }else this.res = this.first / this.second;
-        }
+    @Override
+    public void subtract() {
+        setRes(getFirst() - getSecond());
     }
 
     @Override
     public void multiply() {
+        setRes(getFirst() * getSecond());
+    }
 
+    @Override
+    public void divide() {
+        if (mathChar == '/') {
+            if (getSecond() == 0) {
+                throw new ArithmeticException("You can't divide by " + 0);
+            } else setRes(getFirst() / getSecond());
+        }
+    }
+
+    @Override
+    public void calculate() {
+        if (this.mathChar == '+') {
+            add();
+        } else if (this.mathChar == '-') {
+            subtract();
+        } else if (this.mathChar == '*') {
+            multiply();
+        } else if (this.mathChar == '/') {
+            if (this.second == 0) {
+                throw new ArithmeticException("You can't divide by " + 0);
+            } else setRes(getFirst() / getSecond());
+        }
     }
 }

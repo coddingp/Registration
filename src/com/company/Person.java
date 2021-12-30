@@ -23,7 +23,7 @@ public class Person implements Registration {
     }
 
     public void setName(String name) {
-        if(this.name.equals("")){
+        if (this.name.equals("")) {
             System.out.println("Enter a valid data");
         } else this.name = name;
     }
@@ -55,11 +55,11 @@ public class Person implements Registration {
 
     @Override
     public void registration() {
-        if (getName()!=null){
-            System.out.println(getName()+" " + getSurname() + " registered successfully.");
-            Calculator calculator = new Calculator(this.a,this.mathChar,this.b);
+        if (getName() != null) {
+            System.out.println(getName() + " " + getSurname() + " registered successfully.");
+            Calculator calculator = new Calculator(this.a, this.mathChar, this.b);
             calculator.calculate();
-            System.out.println("The result of your request is equal to: "+calculator.res);
-        }else System.out.println("What are you doing!? Didn't you forgot to enter your name first?)");
+            System.out.println("The result of your request is equal to: " + calculator.res);
+        } else System.out.println("What are you doing!? Didn't you forgot to enter your name first?)");
     }
 }
