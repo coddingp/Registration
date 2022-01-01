@@ -5,13 +5,13 @@ import java.sql.SQLOutput;
 public class Person implements Registration {
     private String name;
     private String surname;
-    private int id;
+    private String id;
     static int a;
     static int b;
     static char mathChar;
     static double res;
 
-    public Person(String name, String surname, int id) {
+    public Person(String name, String surname, String id) {
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -23,7 +23,9 @@ public class Person implements Registration {
     }
 
     public void setName(String name) {
-        if (this.name.equals("")) {
+        if (name.equals(null)) {
+            System.out.println("Enter a valid data");
+        } else if (name.equals("")) {
             System.out.println("Enter a valid data");
         } else this.name = name;
     }
@@ -36,12 +38,14 @@ public class Person implements Registration {
         this.surname = surname;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String id) {
+        if (!id.equals("")) {
+            this.id = id;
+        }else throw new NullPointerException("There is Null ID. You need to specify it using English letters and integer numbers");
     }
 
     @Override
@@ -55,11 +59,11 @@ public class Person implements Registration {
 
     @Override
     public void registration() {
-        if (getName() != null) {
+        if ((getName() != null && !getName().equals("")) && (getSurname() != null && !getSurname().equals(""))&& !getId().equals("")) {
             System.out.println(getName() + " " + getSurname() + " registered successfully.");
-            Calculator calculator = new Calculator(this.a, this.mathChar, this.b);
+            Calculator calculator = new Calculator(a, mathChar, b);
             calculator.calculate();
             System.out.println("The result of your request is equal to: " + calculator.res);
-        } else System.out.println("What are you doing!? Didn't you forgot to enter your name first?)");
+        } else System.out.println("What are you doing!? Didn't you forgot to enter your name, surname or ID first?)");
     }
 }
